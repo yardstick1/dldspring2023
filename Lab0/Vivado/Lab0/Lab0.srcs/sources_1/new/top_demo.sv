@@ -27,7 +27,7 @@ module top_demo
   output logic [7:0] led
 );
 
-  assign led[3:0] = sw;
-  assign led[7:4] = btn;
+  assign led[0] = ~sw[0] & ~sw[1] & sw[2] | ~sw[0] & sw[1] & ~sw[2] | sw[0] & ~sw[1]&~sw[2] | sw[0] & sw[1] & sw[2];
+  assign led[1] = sw[0] & sw[1] & sw[2] | sw[0] & sw[1] & ~sw[2] | sw[0] & ~sw[1] & sw[2] | ~sw[0] & sw[1] & sw[2];
 
 endmodule
